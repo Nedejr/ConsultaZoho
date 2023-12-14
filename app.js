@@ -8,7 +8,7 @@ import dotenv from 'dotenv'
 console.log('Consultando Zoho...')
 dotenv.config()
 const token = process.env.ZOHO_ACESS_TOKEN
-let retornoJSON = ""
+
 
 
 const queryRecords = async ({selectFields, module, query, limit, token} ) => {
