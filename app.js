@@ -1,11 +1,17 @@
 import axios from 'axios'
-import {selectFields, module, query, limit, zoho_acess_token} from './query.js'
+import {selectFields, module, query, limit} from './query.js'
 import {criaArquivoCSV} from './rotinas.js'
 import fs from 'fs'
+import dotenv from 'dotenv'
+
+
 console.log('Consultando Zoho...')
+dotenv.config()
+const token = process.env.ZOHO_ACESS_TOKEN
 let retornoJSON = ""
 
-const queryRecords = async ({selectFields, module, query, limit, zoho_acess_token} ) => {
+
+const queryRecords = async ({selectFields, module, query, limit, token} ) => {
     let registros = []
 
     //teste via arquivo
@@ -17,7 +23,7 @@ const queryRecords = async ({selectFields, module, query, limit, zoho_acess_toke
 
     const requestDetails = {
         method: "POST",
-        headers: { 'Authorization': `Zoho-oauthtoken ${zoho_acess_token}` },
+        headers: { 'Authorization': `Zoho-oauthtoken ${token}` },
         body: JSON.stringify(requestBody),
         encoding: "utf8",
         throwHttpErrors: false
@@ -37,6 +43,6 @@ const queryRecords = async ({selectFields, module, query, limit, zoho_acess_toke
     return registros
 }
 
-queryRecords({selectFields, module, query, limit, zoho_acess_token})
+queryRecords({selectFields, module, query, limit, token})
 
 
