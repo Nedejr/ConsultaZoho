@@ -31,4 +31,14 @@ const montaClausulaWHERE = ()=>{
   let arquivo = fs.readFileSync("./ArquivosGerados/clausulaWHERE.txt", "utf8").trim(); 
   return arquivo.trim()
 }
-export {criaArquivoCSV, montaClausulaWHERE}
+
+const transformaAarray = ()=>{
+  let arquivo = fs.readFileSync("./ArquivosGerados/clausulaWHERE2.txt", "utf8").trim();
+  let novoArray = arquivo.trim().replace(/(\r\n|\n|\r)/gm, "").split(",")
+  console.log(novoArray.length)
+}
+
+
+export {criaArquivoCSV}
+
+transformaAarray()

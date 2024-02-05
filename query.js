@@ -1,6 +1,7 @@
 //CONTAS
 
-const selectFields = "D_gito_Chave, Account_Name, id, ChaveAltoQi, E_mail" 
+//const selectFields = "D_gito_Chave, Account_Name, id, ChaveAltoQi, E_mail" 
+const selectFields = "CNPJ_CPF_Original, CNPJ_CPF, CNPJ1, CPF_2, Account_Name, id, ChaveAltoQi, E_mail" 
 const module = "Accounts"
 const query = ""
 const limit = "200"

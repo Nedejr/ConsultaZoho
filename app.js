@@ -10,7 +10,6 @@ dotenv.config()
 const token = process.env.ZOHO_ACESS_TOKEN
 
 
-
 const queryRecords = async ({selectFields, module, query, limit, token} ) => {
     let registros = []
 
@@ -30,16 +29,11 @@ const queryRecords = async ({selectFields, module, query, limit, token} ) => {
     }
 
     
-    await axios.post(`${url}`, requestDetails.body, requestDetails)
-        .then(response =>{
-            registros = response.data.data
-            //console.log(registros)
-            criaArquivoCSV(registros, selectFields)
-        })
-        .catch(error => {
-            console.log("Erro : " + JSON.stringify(error.response.data));
-        }
-    )
+    const response = await axios.post(`${url}`, requestDetails.body, requestDetails)
+     
+    
+    criaArquivoCSV(response.data.data, selectFields)    
+    
     return registros
 }
 
